@@ -124,4 +124,22 @@ blop; // 'blop'
 ## function 
 trong toán học f(x)=2x <br>
 f của x là 2x =>> f của 2 là 4 <br>
+## Arguments
+```javascript
+const createUser = (
+    {name = 'Anonymous',avatarThumbnail = '/avatars/anonymous.png'},
+    [a='a1',b,c='a3'],
+    n='n'
+) => ({
+    name,
+    avatarThumbnail,
+    a,b,c,n
+});
 
+const george = createUser(
+    { name: 'George', avatarThumbnail: 'avatars/shades-emoji.png'},
+    [,'ar2',undefined],
+    undefined
+);
+console.log(george);
+```
