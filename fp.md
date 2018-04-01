@@ -280,8 +280,33 @@ const a= (x)=>{
 }
 console.log('...',a(1)); 
 ```
+# A Word on Redux - react
+* nguyên lý hoạt động của redux là dùng reduce để quản lý state : nó nhận vaò state hiện tại và 1 action và trã về state mới : <br>
+`reducer(state: Any, action: { type: String, payload: Any}) => newState: Any`<br>
+* rude reduce in dedux 
+1. A reducer called with no parameters should return its valid initial state.
+2. If the reducer isn’t going to handle the action type, it still needs to return the state.
+3. Redux reducers must be pure functions.
+* ví dụ 
+```javascript
+const ADD_VALUE = 'ADD_VALUE';
+const summingReducer = (state = 0, action = {}) => {
+  const { type, payload } = action;
+  switch (type) {
+    case ADD_VALUE:
+      return state + payload.value;
+    default: return state;
+  }
+};
 
-
+const actions = [
+  { type: 'ADD_VALUE', payload: { value: 1 } },
+  { type: 'ADD_VALUE', payload: { value: 1 } },
+  { type: 'ADD_VALUE', payload: { value: 1 } },
+];
+actions.reduce(summingReducer, 0); // 3
+```
+## chốt : reduce là công cụ tuyệt vời cho fp !
 
 
 
